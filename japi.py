@@ -3,15 +3,15 @@ import sys
 import json
 
 def getStockData():
-    API_KEY = ""
-    FUNCTION = ""
-    BASE_URL = "https://www.alphavantage.co/documentation/"
+    apiKEY = "FGAMG8B9J2UC7MX5"
+    function = "BatchStockQuotes"
+    APPL_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=msft&apikey=FGAMG8B9J2UC7MX5"
     symbol = ""
     filename = "japi.out"
     while symbol != 'stop':
         symbol = input('Enter Stock symbol, [tpye "stop" to quit]: ')
         if symbol != "stop":
-            fullurl = BASE_URL + FUNCTION + "&symbols=" + symbol + "&apikey=" + API_KEY
+            fullurl = APPL_URL + function + "&symbols=" + symbol + "&apikey=" + apiKEY
             connection = urllib.request.urlopen(fullurl)
             responseString = connection.read().decode()
             json_data = json.dumps(responseString)
